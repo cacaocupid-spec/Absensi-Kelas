@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f7f5f2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.kartu-absen {
+  background: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  padding: 32px 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ececec;
+}
+
+.eyebrow {
+  font-size: 13px;
+  color: #8a8578;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2b2a27;
+  margin-bottom: 6px;
+}
+
+.subteks {
+  font-size: 14px;
+  color: #767267;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a4842;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd9d0;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #2b2a27;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+input:focus {
+  border-color: #6b8a7a;
+}
+
+button {
+  margin-top: 8px;
+  padding: 13px;
+  background: #3d5a4c;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button:hover {
+  background: #2f4a3d;
+}
+
+button:disabled {
+  background: #a9b6ae;
+  cursor: not-allowed;
+}
+
+#pesan-status {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  min-height: 20px;
+}
+
+#pesan-status.sukses {
+  color: #3d5a4c;
+}
+
+#pesan-status.gagal {
+  color: #b3492f;
+}

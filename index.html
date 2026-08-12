@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Absensi Kelas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="kartu-absen">
+      <p class="eyebrow" id="tanggal-hari-ini"></p>
+      <h1>Absen kehadiran</h1>
+      <p class="subteks">
+        Isi data di bawah untuk mencatat kehadiranmu hari ini.
+      </p>
+
+      <form id="form-absen">
+        <label for="nama">Nama lengkap</label>
+        <input
+          type="text"
+          id="nama"
+          name="nama"
+          placeholder="Contoh: Keisya Jovina Adhani"
+          required
+        />
+
+        <label for="kelas">Kelas</label>
+        <input
+          type="text"
+          id="kelas"
+          name="kelas"
+          placeholder="Contoh: 6B"
+          required
+        />
+
+        <button type="submit" id="btn-submit">Catat kehadiran</button>
+      </form>
+
+      <p id="pesan-status"></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+>
