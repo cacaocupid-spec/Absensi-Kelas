@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Presensi - Guru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="guru.css" />
+  </head>
+  <body>
+    <div class="wadah">
+      <header class="header-dashboard">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h1>Rekap Presensi</h1>
+        </div>
+        <div class="filter-tanggal">
+          <button
+            type="button"
+            class="opsi-filter aktif"
+            data-filter="hari-ini"
+          >
+            Hari ini
+          </button>
+          <button type="button" class="opsi-filter" data-filter="semua">
+            Semua
+          </button>
+        </div>
+      </header>
+
+      <div class="grid-ringkasan">
+        <div class="kartu-ringkasan">
+          <p class="label-ringkasan">Total Hadir</p>
+          <p class="angka-ringkasan" id="angka-total">0</p>
+        </div>
+        <div class="kartu-ringkasan">
+          <p class="label-ringkasan">Murid</p>
+          <p class="angka-ringkasan" id="angka-murid">0</p>
+        </div>
+        <div class="kartu-ringkasan">
+          <p class="label-ringkasan">Guru</p>
+          <p class="angka-ringkasan" id="angka-guru">0</p>
+        </div>
+        <div class="kartu-ringkasan">
+          <p class="label-ringkasan">Terlambat</p>
+          <p class="angka-ringkasan angka-terlambat" id="angka-terlambat">0</p>
+        </div>
+      </div>
+
+      <div class="kartu-tabel">
+        <div id="status-muat" class="status-muat">Memuat data...</div>
+        <table id="tabel-presensi" style="display: none">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Waktu</th>
+              <th>Peran</th>
+              <th>Nama</th>
+              <th>Kelas/Mapel</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="isi-tabel"></tbody>
+        </table>
+        <p id="pesan-kosong" class="pesan-kosong" style="display: none">
+          Belum ada data presensi.
+        </p>
+      </div>
+    </div>
+
+    <script src="guru.js"></script>
+  </body>
+</html>
