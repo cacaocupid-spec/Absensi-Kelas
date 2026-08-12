@@ -3,37 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Absensi Kelas</title>
+    <title>Presensi Sekolah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="kartu-absen">
+    <div class="kartu-presensi">
+      <div class="lencana">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
       <p class="eyebrow" id="tanggal-hari-ini"></p>
-      <h1>Absen kehadiran</h1>
+      <h1>Presensi Sekolah</h1>
       <p class="subteks">
-        Isi data di bawah untuk mencatat kehadiranmu hari ini.
+        Pilih peran, isi data, dan catat kehadiranmu hari ini.
       </p>
 
-      <form id="form-absen">
+      <div class="pemilih-peran">
+        <button type="button" class="opsi-peran aktif" data-peran="Murid">
+          Murid
+        </button>
+        <button type="button" class="opsi-peran" data-peran="Guru">Guru</button>
+      </div>
+
+      <form id="form-presensi">
+        <input type="hidden" id="peran" value="Murid" />
+
         <label for="nama">Nama lengkap</label>
         <input
           type="text"
           id="nama"
           name="nama"
-          placeholder="Contoh: Keisya Jovina Adhani"
+          placeholder="Contoh: Siti Aminah"
           required
         />
 
-        <label for="kelas">Kelas</label>
+        <label for="kelasMapel" id="label-kelas-mapel">Kelas</label>
         <input
           type="text"
-          id="kelas"
-          name="kelas"
-          placeholder="Contoh: 6B"
+          id="kelasMapel"
+          name="kelasMapel"
+          placeholder="Contoh: 5B"
           required
         />
 
-        <button type="submit" id="btn-submit">Catat kehadiran</button>
+        <button type="submit" id="btn-submit">
+          <span id="teks-tombol">Catat kehadiran</span>
+        </button>
       </form>
 
       <p id="pesan-status"></p>
@@ -42,4 +75,3 @@
     <script src="script.js"></script>
   </body>
 </html>
->

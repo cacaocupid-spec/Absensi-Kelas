@@ -1,4 +1,4 @@
-// GANTI dengan Web App URL yang kamu dapat dari Apps Script tadi
+// GANTI dengan Web App URL dari Apps Script kamu
 const URL_APPS_SCRIPT =
   "https://script.google.com/macros/s/AKfycbz-FZJP9YsXr2Jk-f-lFvUMAKoSa4S5xeDAuO7uZZZSwCypsCD4s0CLgOxb6fH1Vg_0YA/exec";
 
@@ -36,34 +36,71 @@ document.getElementById("tanggal-hari-ini").textContent =
   " " +
   sekarang.getFullYear();
 
-// Ambil elemen-elemen yang kita butuhkan
-const form = document.getElementById("form-absen");
+// Elemen-elemen yang kita butuhkan
+const tombolPeran = document.querySelectorAll(".opsi-peran");
+const inputPeran = document.getElementById("peran");
+const labelKelasMapel = document.getElementById("label-kelas-mapel");
+const inputKelasMapel = document.getElementById("kelasMapel");
+const form = document.getElementById("form-presensi");
 const btnSubmit = document.getElementById("btn-submit");
+const teksTombol = document.getElementById("teks-tombol");
 const pesanStatus = document.getElementById("pesan-status");
 
+// Logika toggle Guru / Murid
+tombolPeran.forEach(function (tombol) {
+  tombol.addEventListener("click", function () {
+    // Hapus class 'aktif' dari semua tombol, lalu kasih ke yang diklik
+    tombolPeran.forEach(function (t) {
+      t.classList.remove("aktif");
+    });
+    tombol.classList.add("aktif");
+
+    const peranTerpilih = tombol.getAttribute("data-peran");
+    inputPeran.value = peranTerpilih;
+
+    // Sesuaikan label & placeholder field kedua tergantung peran
+    if (peranTerpilih === "Guru") {
+      labelKelasMapel.textContent = "Mata pelajaran / Jabatan";
+      inputKelasMapel.placeholder = "Contoh: Guru Matematika";
+    } else {
+      labelKelasMapel.textContent = "Kelas";
+      inputKelasMapel.placeholder = "Contoh: 5B";
+    }
+  });
+});
+
+// Submit form
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // mencegah halaman reload saat submit
+  event.preventDefault();
 
+  const peran = inputPeran.value;
   const nama = document.getElementById("nama").value.trim();
-  const kelas = document.getElementById("kelas").value.trim();
+  const kelasMapel = inputKelasMapel.value.trim();
 
-  if (!nama || !kelas) {
-    tampilkanPesan("Nama dan kelas wajib diisi.", "gagal");
+  if (!nama || !kelasMapel) {
+    tampilkanPesan("Semua kolom wajib diisi.", "gagal");
     return;
   }
 
   btnSubmit.disabled = true;
-  btnSubmit.textContent = "Mengirim...";
+  teksTombol.textContent = "Mengirim...";
 
   fetch(URL_APPS_SCRIPT, {
     method: "POST",
-    mode: "no-cors", // wajib, karena Apps Script tidak mengirim header CORS
+    mode: "no-cors",
     headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify({ nama: nama, kelas: kelas }),
+    body: JSON.stringify({ peran: peran, nama: nama, kelasMapel: kelasMapel }),
   })
     .then(function () {
-      tampilkanPesan("Absen berhasil, " + nama + "! Terima kasih.", "sukses");
+      tampilkanPesan("Presensi berhasil dicatat, " + nama + "!", "sukses");
       form.reset();
+      inputPeran.value = "Murid"; // reset toggle ke default
+      tombolPeran.forEach(function (t) {
+        t.classList.remove("aktif");
+      });
+      tombolPeran[0].classList.add("aktif");
+      labelKelasMapel.textContent = "Kelas";
+      inputKelasMapel.placeholder = "Contoh: 5B";
     })
     .catch(function () {
       tampilkanPesan(
@@ -73,7 +110,7 @@ form.addEventListener("submit", function (event) {
     })
     .finally(function () {
       btnSubmit.disabled = false;
-      btnSubmit.textContent = "Catat kehadiran";
+      teksTombol.textContent = "Catat kehadiran";
     });
 });
 

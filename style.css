@@ -5,8 +5,14 @@
 }
 
 body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: #f7f5f2;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0d1b2e;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(74, 123, 194, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(74, 123, 194, 0.2), transparent 40%),
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: auto, auto, 32px 32px, 32px 32px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -14,100 +20,169 @@ body {
   padding: 24px;
 }
 
-.kartu-absen {
+.kartu-presensi {
+  position: relative;
   background: #ffffff;
   width: 100%;
-  max-width: 380px;
-  padding: 32px 28px;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  border: 1px solid #ececec;
+  max-width: 420px;
+  padding: 44px 34px 34px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.kartu-presensi::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #2f5fa8, #5b8fd6, #2f5fa8);
+}
+
+.lencana {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2f5fa8, #4a7bc2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(47, 95, 168, 0.35);
 }
 
 .eyebrow {
-  font-size: 13px;
-  color: #8a8578;
+  font-size: 12px;
+  color: #4a7bc2;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
 h1 {
-  font-size: 24px;
+  font-family: 'Fraunces', serif;
+  font-size: 27px;
   font-weight: 600;
-  color: #2b2a27;
-  margin-bottom: 6px;
+  color: #16233b;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .subteks {
   font-size: 14px;
-  color: #767267;
-  margin-bottom: 28px;
-  line-height: 1.5;
+  color: #5c6b84;
+  margin-bottom: 26px;
+  line-height: 1.6;
+}
+
+.pemilih-peran {
+  display: flex;
+  background: #eef2f8;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.opsi-peran {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  background: transparent;
+  border-radius: 9px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7a93;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.opsi-peran.aktif {
+  background: #ffffff;
+  color: #2f5fa8;
+  box-shadow: 0 2px 8px rgba(22, 35, 59, 0.12);
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 label {
   font-size: 13px;
-  font-weight: 500;
-  color: #4a4842;
-  margin-bottom: 6px;
+  font-weight: 600;
+  color: #16233b;
+  margin-bottom: 7px;
   display: block;
 }
 
-input {
+input[type="text"] {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #ddd9d0;
+  padding: 13px 16px;
+  border: 1.5px solid #dde4ee;
   border-radius: 10px;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
-  color: #2b2a27;
+  color: #16233b;
+  background: #fafbfd;
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: all 0.2s ease;
 }
 
-input:focus {
-  border-color: #6b8a7a;
+input[type="text"]::placeholder {
+  color: #a7b3c5;
 }
 
-button {
+input[type="text"]:focus {
+  border-color: #4a7bc2;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(74, 123, 194, 0.12);
+}
+
+button[type="submit"] {
   margin-top: 8px;
-  padding: 13px;
-  background: #3d5a4c;
+  padding: 15px;
+  background: linear-gradient(135deg, #2f5fa8, #4a7bc2);
   color: #ffffff;
   border: none;
   border-radius: 10px;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(47, 95, 168, 0.35);
 }
 
-button:hover {
-  background: #2f4a3d;
+button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(47, 95, 168, 0.45);
 }
 
-button:disabled {
-  background: #a9b6ae;
+button[type="submit"]:disabled {
+  background: #b7c3d6;
+  box-shadow: none;
   cursor: not-allowed;
+  transform: none;
 }
 
 #pesan-status {
-  margin-top: 16px;
+  margin-top: 18px;
   font-size: 14px;
+  font-weight: 500;
   text-align: center;
   min-height: 20px;
 }
 
 #pesan-status.sukses {
-  color: #3d5a4c;
+  color: #1f7a4d;
 }
 
 #pesan-status.gagal {
-  color: #b3492f;
+  color: #c0432e;
 }
